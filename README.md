@@ -1,113 +1,41 @@
-# 📜 Código de Normas Judiciais — TJCE
-### Portal de Consulta para Servidores do Poder Judiciário do Ceará
+# Código de Normas Judiciais — TJCE (consulta)
 
-> Provimento nº 02/2021/CGJCE · 28 Capítulos · 469 Artigos
+Site de consulta ao **Código de Normas Judiciais da CGJCE (Provimento nº 02/2021/CGJCE)**,
+versão consolidada com alterações até o Prov. nº 09/2026/CGJCE (DJeA 22/05/2026).
 
----
+## O que tem
+Busca com sugestões (palavra, nº do artigo, ex.: `311-A`), estrutura oficial (28 capítulos, seções e subseções),
+445 artigos + os com letras, 20 anexos, artigos revogados esmaecidos, histórico de alterações de cada artigo,
+copiar com citação, imprimir/PDF, favoritos, recentes, "mais consultados por você", filtros temáticos,
+alterações 2025–2026, modo escuro, **Modo Servidor** e uso no celular.
 
-## 🚀 Como rodar localmente
+**Regra de fidelidade:** o texto não é reescrito. A aba "Por tipo de vara" agrupa somente capítulos de matéria
+inequívoca (penal, execução penal, infância e juventude) e sempre exibe o aviso:
+"Organização por uso prático. Consulte a estrutura oficial para leitura integral."
 
-### Pré-requisitos
-- Node.js 18+ instalado ([baixar aqui](https://nodejs.org))
+## Rodar no computador (opcional)
+    npm install
+    npm run dev        # abre em http://localhost:5173
+    npm run build      # gera a pasta dist/
 
-### Instalação e execução
+## Atualizar o texto do Código no futuro
+1. Substitua `fonte/codigo-de-normas.md` pelo novo arquivo Markdown.
+2. Rode `npm run dados` (precisa de Python 3). Isso regenera `public/data.json` e mostra as contagens.
 
-```bash
-# 1. Entre na pasta do projeto
-cd tjce-normas
+## Publicar SEM instalar nada
+### 1) GitHub (pelo navegador)
+1. Entre em github.com e faça login. Clique em **+** (canto superior direito) → **New repository**.
+2. Nome: `codigo-de-normas-tjce`. Marque **Public** (ou Private). Clique **Create repository**.
+3. Na página do repositório, clique em **uploading an existing file**.
+4. Descompacte o .zip no seu computador, abra a pasta e **arraste o CONTEÚDO** (não a pasta em si) para a janela do GitHub:
+   `src`, `public`, `scripts`, `fonte`, `index.html`, `package.json`, `vite.config.js`, `README.md`.
+5. Clique **Commit changes**.
+### 2) Vercel
+1. Entre em vercel.com → **Sign Up** → **Continue with GitHub**.
+2. **Add New… → Project** → escolha o repositório `codigo-de-normas-tjce` → **Import**.
+3. Não mude nada (o Vercel reconhece Vite sozinho). Clique **Deploy**.
+4. Em ~1 minuto você recebe um link `https://….vercel.app` — funciona no PC e no celular.
+(Netlify: **Add new site → Import from GitHub**, build `npm run build`, publish `dist`.)
 
-# 2. Instale as dependências
-npm install
-
-# 3. Inicie o servidor de desenvolvimento
-npm run dev
-```
-
-O site abrirá em: **http://localhost:5173**
-
-### Build para produção
-
-```bash
-npm run build
-# Arquivos gerados em: dist/
-```
-
----
-
-## 🌐 Hospedagem gratuita
-
-### Vercel (recomendado)
-1. Acesse [vercel.com](https://vercel.com) e faça login
-2. Clique em "New Project" → "Import Git Repository"
-3. Faça upload da pasta ou conecte ao GitHub
-4. Framework Preset: **Vite**
-5. Clique em "Deploy"
-
-### Netlify
-1. Acesse [netlify.com](https://netlify.com)
-2. Arraste a pasta `dist/` (após rodar `npm run build`) para o painel
-3. Site publicado instantaneamente
-
----
-
-## ⚙️ Funcionalidades
-
-| Funcionalidade | Descrição |
-|---|---|
-| 🔍 Busca por palavras-chave | Pesquisa em todos os 469 artigos |
-| 📖 Estrutura Completa | Navegação fiel ao Código original (28 Cap.) |
-| ⚖️ Por Tipo de Vara | Filtro prático: Criminal, Cível, Execução, etc. |
-| 🎙️ Filtro Temático | Audiências, Prazos, Citações, Mandados, etc. |
-| ⭐ Favoritos | Marque artigos para acesso rápido |
-| 🕐 Recentes | Histórico dos últimos artigos acessados |
-| 📋 Copiar Artigo | Copia o texto completo formatado |
-| ⚡ Modo Servidor | Interface simplificada para uso em audiências |
-
----
-
-## ⚡ Modo Servidor
-
-Pensado para uso durante **audiências e atendimento ao público**:
-- Interface escura, foco total na busca
-- Resultados instantâneos
-- Botão de cópia rápida em cada artigo
-- Atalhos para termos mais usados
-
----
-
-## 📁 Estrutura do Projeto
-
-```
-tjce-normas/
-├── src/
-│   ├── App.jsx          ← Aplicação completa (dados + interface)
-│   ├── main.jsx         ← Ponto de entrada React
-│   └── index.css        ← Reset CSS mínimo
-├── public/
-├── index.html
-├── package.json
-├── vite.config.js
-└── README.md
-```
-
----
-
-## ⚖️ Nota Jurídica
-
-Este portal não altera, interpreta nem complementa o texto do Código de Normas Judiciais. 
-Todos os artigos são exibidos com **fidelidade absoluta** ao Provimento nº 02/2021/CGJCE.
-
-A organização "Por Tipo de Vara" é uma classificação de uso prático e não substitui a 
-estrutura oficial do Código. Em caso de dúvida, consulte sempre a **Estrutura Completa**.
-
-**Fonte oficial:** Corregedoria-Geral da Justiça do Estado do Ceará (CGJCE)
-
----
-
-## 🛠️ Tecnologias
-
-- **React 18** — Interface de usuário
-- **Vite** — Build tool e dev server
-- **CSS inline** — Estilização sem dependências externas
-- **localStorage** — Persistência de favoritos e histórico
-
+## Aviso
+Ferramenta de consulta. Confira sempre a versão oficial publicada pela Corregedoria-Geral da Justiça.
